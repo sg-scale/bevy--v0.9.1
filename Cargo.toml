@@ -128,7 +128,7 @@ bevy_internal = { path = "crates/bevy_internal", version = "0.9.1", default-feat
 [dev-dependencies]
 anyhow = "1.0.4"
 rand = "0.8.0"
-ron = "0.8.0"
+ron = "0.12.3"
 serde = { version = "1", features = ["derive"] }
 bytemuck = "1.7"
 # Needed to poll Task examples
