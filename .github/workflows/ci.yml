@@ -18,7 +18,7 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
@@ -42,7 +42,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: ci
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
@@ -144,7 +144,7 @@ jobs:
     needs: check-examples-readme-update-needed
     if: always()
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
@@ -173,7 +173,7 @@ jobs:
           sudo add-apt-repository ppa:oibaf/graphics-drivers -y
           sudo apt-get update
           sudo apt install -y xvfb libegl1-mesa libgl1-mesa-dri libxcb-xfixes0-dev mesa-vulkan-drivers
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
@@ -206,7 +206,7 @@ jobs:
   check-doc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v2
         with:
           path: |
@@ -237,14 +237,14 @@ jobs:
   check-missing-examples-in-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - run: cargo run -p build-example-pages -- check-missing
 
   check-examples-readme-update-needed:
     needs: check-missing-examples-in-docs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - run: cargo run -p build-example-pages -- update
       - name: Check for modified files
         run: |
@@ -255,7 +255,7 @@ jobs:
   check-unused-dependencies:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - uses: actions/cache@v3
         with:
           path: |
